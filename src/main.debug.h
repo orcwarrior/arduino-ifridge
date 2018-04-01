@@ -1,4 +1,4 @@
-#include "./dummyLibs/Arduino.h"
+#include "./dummy-libs/Arduino.h"
 #include <stdio.h>
 #include "./lib/EventManager/EventManager.hpp"
 
