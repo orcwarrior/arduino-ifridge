@@ -78,10 +78,9 @@ public:
 
   void dispatchEvent(string eventName, Event *e)
   {
-    vector<EventHandler> *eventHandlers = this->getEventSafe(eventName);
-    // for (auto const &eventHandler : *event) {
-    //   eventHandler(e);
-    // }
+    vector<EventHandler> *eventHandlers = this->getEvent(eventName);
+    if (!eventHandlers) return;
+    
     for (int idx = 0; idx < eventHandlers->size(); ++idx) {
       EventHandler* evtHandler = &((*eventHandlers)[idx]);
       if ( evtHandler )  (*evtHandler)(e);
