@@ -5,7 +5,7 @@
             "includePath": [
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/cores/arduino",
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/variants/eightanaloginputs",
-                "c:/Users/orcwa/Documents/PlatformIO/Projects/arduino-platformio-bootstrap-vscode/src",
+                "c:/Users/orcwa/Desktop/Projekty/IoT/arduino-ifridge/src",
                 "C:/Users/orcwa/.platformio/lib/StandardCplusplus",
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src",
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src",
@@ -45,7 +45,7 @@
                 "path": [
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/cores/arduino",
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/variants/eightanaloginputs",
-                    "c:/Users/orcwa/Documents/PlatformIO/Projects/arduino-platformio-bootstrap-vscode/src",
+                    "c:/Users/orcwa/Desktop/Projekty/IoT/arduino-ifridge/src",
                     "C:/Users/orcwa/.platformio/lib/StandardCplusplus",
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src",
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src",
