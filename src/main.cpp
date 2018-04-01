@@ -7,37 +7,55 @@
 #endif
 
 #include "./lib/IntervalManager/IntervalManager.hpp"
+#include "./lib/utils.hpp"
+#include "./modules/AnalogPinReader.hpp"
 #include <iostream>
 #include <stdio.h>
 
 using util::Callback;
 
-int ledState = 0;
-void ledHandler(Event *e)
-{
-  ledState = !ledState;
-  digitalWrite(LED_BUILTIN, ledState);
-}
-
-void ledInterval(Interval *i)
-{
-  // i->setInterval(i->getInterval()+2);
-  ledState = !ledState;
-  digitalWrite(LED_BUILTIN, ledState);
-}
-
 IntervalManager *intervalMan = IntervalManager::getInstance();
 EventManager *man            = EventManager::getInstance();
-void setup()
+
+bool ledState = false;
+void ledToggle(Interval *i)
 {
-  pinMode(LED_BUILTIN, OUTPUT);
-  man->addEventListener("test", BIND_FREE_CB(ledHandler));
+  ledState = !ledState;
+  digitalWrite(LED_BUILTIN, ledState);
+  // string msg = "LED Toggle: ";
+  // msg += NumberToString<int>(i->getInterval());
+  // Serial.println(msg.c_str());
+}
+Interval *ledToggleInterval = new Interval(BIND_FREE_CB(ledToggle), 2);
+
+void onPotChange(Event *e)
+{
+  ReadPinEvent *read = (ReadPinEvent *)e;
+  // string msg         = "onPotChange: ";
+  // msg += NumberToString<int>(read->value / 2);
+  // Serial.println(msg.c_str());
+
+  ledToggleInterval->setInterval(read->value / 2);
 }
 
+void setup()
+{
+  Serial.begin(9600);
+  Serial.println("Test");
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  intervalMan->add(ledToggleInterval);
+  AnalogPinReader *potA0 = new AnalogPinReader(0);
+  man->addEventListener("ReadPin-0", BIND_FREE_CB(onPotChange));
+}
+
+int loops = 0;
 void loop()
 {
   intervalMan->run();
-  man->dispatchEvent("test", new Event("test"));
-
-  // eventMan->dispatchEvent("secondPassed", new Event("none"));
+  // if ((++loops % 1500) == 0) {
+  //   string msg = "LT: ";
+  //   msg += NumberToString<int>(t2 - t1);
+  //   Serial.println(msg.c_str());
+  // }
 }
