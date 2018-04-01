@@ -8,6 +8,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "./EmulatedSerial.hpp" // Serial
 
 #ifdef __cplusplus
 extern "C"{
