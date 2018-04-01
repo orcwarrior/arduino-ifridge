@@ -44,7 +44,7 @@ private:
   // static EventManager instance;
 
 public:
-  static EventManager* getInstance()
+  static EventManager *getInstance()
   {
     static EventManager instance;
     return &instance;
@@ -59,24 +59,34 @@ public:
       return NULL;
     }
   };
+  vector<EventHandler> *getEventSafe(string eventName)
+  {
+    if (this->events->find(eventName) != this->events->end()) {
+      return &(*this->events)[eventName];
+    } else {
+      this->defineEvent(eventName);
+      return this->getEvent(eventName);
+    }
+  };
 
   bool addEventListener(string eventName, EventHandler handler)
   {
-    vector<EventHandler> *event = this->getEvent(eventName);
-    if (!event) {
-      this->defineEvent(eventName);
-      return this->addEventListener(eventName, handler);
-    }
+    vector<EventHandler> *event = this->getEventSafe(eventName);
     event->push_back(handler);
     return true;
   }
 
   void dispatchEvent(string eventName, Event *e)
   {
-    vector<EventHandler> *event = this->getEvent(eventName);
-    for (auto const &eventHandler : *event) {
-      eventHandler(e);
+    vector<EventHandler> *eventHandlers = this->getEventSafe(eventName);
+    // for (auto const &eventHandler : *event) {
+    //   eventHandler(e);
+    // }
+    for (int idx = 0; idx < eventHandlers->size(); ++idx) {
+      EventHandler* evtHandler = &((*eventHandlers)[idx]);
+      if ( evtHandler )  (*evtHandler)(e);
     }
+    delete e;
   }
 };
 
