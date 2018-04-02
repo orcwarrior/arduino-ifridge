@@ -1,5 +1,5 @@
-#ifndef POT_HPP
-#define POT_HPP
+#ifndef ANALOG_PIN_READER_HPP
+#define ANALOG_PIN_READER_HPP
 
 #include "../lib/EventManager/Event/Event.hpp"
 #include "../lib/EventManager/EventManager.hpp"
@@ -17,14 +17,12 @@ using namespace std;
 class ReadPinEvent : public Event
 {
 public:
-  ReadPinEvent(int value, double valueF = std::numeric_limits<double>::quiet_NaN())
+  ReadPinEvent(int value)
   : Event("ReadPinEvent")
   {
-    this-> value =  value;
-    this-> valueF = valueF;
+    this->val =  value;
   }
-  int value;
-  float valueF;
+  int val;
 };
 
 class AnalogPinReader
@@ -54,7 +52,7 @@ public:
 
   int read()
   {
-    const int IGNORED_DELTA = 5;
+    const int IGNORED_DELTA = 2;
     int v = analogRead(this->pin);
     // string msg = "AnalogRead: "; msg  += NumberToString<int>(v);
     // Serial.println(msg.c_str());
