@@ -44,7 +44,9 @@
         "ostream_helpers": "cpp",
         "streambuf": "cpp",
         "string_iostream": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "cmath": "cpp",
+        "iomanip": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "C_Cpp.clang_format_fallbackStyle": "LLVM",

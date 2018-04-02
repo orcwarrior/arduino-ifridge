@@ -3,6 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
+                "${workspaceRoot}/lib/*",
+                "${workspaceRoot}/lib/ssd1306/src",
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/cores/arduino",
                 "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/variants/eightanaloginputs",
                 "c:/Users/orcwa/Desktop/Projekty/IoT/arduino-ifridge/src",
@@ -43,6 +45,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": "${workspaceRoot}/.vscode/.browse.c_cpp.db",
                 "path": [
+                    "${workspaceRoot}/lib/*",
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/cores/arduino",
                     "C:/Users/orcwa/.platformio/packages/framework-arduinoavr/variants/eightanaloginputs",
                     "c:/Users/orcwa/Desktop/Projekty/IoT/arduino-ifridge/src",
