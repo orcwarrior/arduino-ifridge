@@ -11,7 +11,7 @@ public:
   FridgeController()
   {
     this->display = new SSDDisplay();
-    this->sensor = new TemperatureSensor();
+    // this->sensor = new TemperatureSensor(4);
     this->initListeners();
   }
 
@@ -41,7 +41,8 @@ private:
     const float tempRange[] = {12, -1 };
     const int range         = tempRange[0] - tempRange[1];
     const float fract       = this->setTemperatureRaw / 1023.0;
-    return floatApprox(tempRange[0] - (range * fract), 1);
+    const float ptHalfApprox = floatApprox((tempRange[0] - (range * fract)) * 2, 0) / 2;
+    return ptHalfApprox;
   }
 
   SSDDisplay *display;
