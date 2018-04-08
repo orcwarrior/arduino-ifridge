@@ -5,6 +5,7 @@
 #include <font6x8.h>
 #include <nano_engine.h>
 #include <ssd1306.h>
+#include <limits>
 
 class SSDDisplay
 {
@@ -29,7 +30,7 @@ public:
     Serial.println(setTempEvt->val);
 
     string setTemp;
-    if (setTempEvt->val == NULL)
+    if (setTempEvt->val == NAN)
       setTemp = "OFF   ";
     else {
       setTemp = NumberToString<float>(setTempEvt->val, 1);
@@ -49,8 +50,8 @@ private:
 
   NanoEngine8 engine;
   // bool changesDone = true;
-  float tempSensor     = 0;
-  float setTemperature = 0;
+  float tempSensor     = NAN;
+  float setTemperature = NAN;
 };
 
 #endif

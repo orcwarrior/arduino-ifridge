@@ -30,7 +30,7 @@ class AnalogPinReader
 private:
   int pin;
   Interval *readInterval;
-  int lastVal = -1;
+  int lastVal = NAN;
   std::string eventName;
 
 public:
@@ -57,7 +57,7 @@ public:
     // string msg = "AnalogRead: "; msg  += NumberToString<int>(v);
     // Serial.println(msg.c_str());
 
-    if (this->lastVal == -1 || (v - IGNORED_DELTA > this->lastVal) ||
+    if (this->lastVal == NAN || (v - IGNORED_DELTA > this->lastVal) ||
         (v + IGNORED_DELTA < this->lastVal)) {
       this->lastVal        = v;
       EventManager::getInstance()->dispatchEvent(this->eventName, new ReadPinEvent(v));
