@@ -18,6 +18,7 @@ void yield(void);
 
 #define HIGH 0x1
 #define LOW  0x0
+#define PROGMEM
 
 #define INPUT 0x0
 #define OUTPUT 0x1
@@ -96,7 +97,7 @@ typedef unsigned int word;
 
 #define bit(b) (1UL << (b))
 
-typedef bool boolean;
+// typedef bool boolean;
 
 void init(void);
 void initVariant(void);
